@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Funcionários</title>
+    
+    <!-- Inclusão do Bootstrap CSS -->
+    {% bootstrap_css %}
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3f4f7, #d1d9e6);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">Cadastro de Funcionários</h1>
+        
+        <!-- Formulário -->
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="d-grid gap-2 mt-3">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="button" class="btn btn-success" onClick="history.go(-1)">Voltar</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Inclusão do Bootstrap JavaScript -->
+    {% bootstrap_javascript %}
+</body>
+</html>

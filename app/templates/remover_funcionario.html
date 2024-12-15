@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover Funcionário</title>
+
+    <!-- Inclusão do Bootstrap CSS -->
+    {% bootstrap_css %}
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 1rem;
+        }
+        .card {
+            width: 100%;
+            max-width: 600px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #dc3545;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .list-group-item {
+            font-size: 1rem;
+            border: none;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Remover Funcionário
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Funcionário: {{ fun.nome }}</h5>
+            <ul class="list-group">
+                <li class="list-group-item">Data de Nascimento: {{ fun.data_nascimento }}</li>
+                <li class="list-group-item">E-mail: {{ fun.email }}</li>
+                <li class="list-group-item">Remuneração: {{ fun.remuneração }}</li>
+            </ul>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="button-group">
+                    <button type="submit" class="btn btn-danger">Remover</button>
+                    <button type="button" class="btn btn-success" onClick="history.go(-1)">Voltar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Inclusão do Bootstrap JavaScript -->
+    {% bootstrap_javascript %}
+</body>
+</html>
